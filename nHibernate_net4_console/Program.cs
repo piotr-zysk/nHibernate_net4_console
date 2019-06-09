@@ -27,14 +27,25 @@ namespace nHibernate_net4_console
 
             using (ITransaction tx = session.BeginTransaction())
             {
+
+                // insert to db
                 var newUser = new User
                 {
-                    Name = "Zenek W.",
-                    Age = 69
+                    Name = "Zdzisława J.",
+                    Age = 58
                 };
 
                 session.Save(newUser);
                 tx.Commit();
+
+                // select from db
+                var adultUsers = session.Query<User>().Where(u => u.Age >= 18).ToList();
+                
+                foreach (var user in adultUsers)
+                {
+                    Console.WriteLine($"User: {user.Name}, age: {user.Age}.");
+                }
+
             }
 
             sessionFactory.Close();
