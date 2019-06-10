@@ -3,9 +3,10 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using nHibernate_core_console.Entities;
+using nHibernate_entities;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 
@@ -20,7 +21,7 @@ namespace nHibernate_core_console.SessionFactories
 
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionStringName))
-                .Mappings(m => m.HbmMappings.AddFromAssemblyOf<User>())
+                .Mappings(m => m.HbmMappings.AddFromAssembly(typeof(nHibernate_setup.NHSetup).Assembly))               //AddFromAssemblyOf<User>())
                 .BuildSessionFactory();
         }
         /// <summary>  

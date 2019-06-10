@@ -1,5 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
-using nHibernate_core_console.Entities;
+using nHibernate_entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

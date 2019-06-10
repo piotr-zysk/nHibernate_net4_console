@@ -3,7 +3,7 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Mapping;
 using NHibernate;
-using nHibernate_core_console.Entities;
+using nHibernate_entities;
 using nHibernate_core_console.SessionFactories;
 using System;
 using System.Linq;

@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nHibernate_net4_console", "nHibernate_net4_console\nHibernate_net4_console.csproj", "{87A504BF-2FF5-4839-B2E0-37E18FA55C4B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D} = {7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}
+		{FA81E7C4-CD1A-406D-82F0-F70688AC8992} = {FA81E7C4-CD1A-406D-82F0-F70688AC8992}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate_core_console", "nHibernate_core_console\nHibernate_core_console.csproj", "{91E80E5F-683B-41AE-ACBF-87DD848EAC45}"
@@ -14,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate_core_console", "
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nHibernate_entities", "nHibernate_entities\nHibernate_entities.csproj", "{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nHibernate_setup", "nHibernate_setup\nHibernate_setup.csproj", "{FA81E7C4-CD1A-406D-82F0-F70688AC8992}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D} = {7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,10 @@ Global
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA81E7C4-CD1A-406D-82F0-F70688AC8992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA81E7C4-CD1A-406D-82F0-F70688AC8992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA81E7C4-CD1A-406D-82F0-F70688AC8992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA81E7C4-CD1A-406D-82F0-F70688AC8992}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
