@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Cfg;
-using nHibernate_net4_console.Models;
+using nHibernate_entities;
 
 namespace nHibernate_net4_console
 {

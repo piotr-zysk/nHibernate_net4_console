@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace nHibernate_net4_console.Models
+﻿namespace nHibernate_entities
 {
     public class User
     {
@@ -12,4 +6,6 @@ namespace nHibernate_net4_console.Models
         public virtual string Name { get; set; }
         public virtual int Age { get; set; }
     }
+
+  
 }
