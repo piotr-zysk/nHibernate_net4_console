@@ -1,13 +1,7 @@
-﻿using FluentNHibernate.Automapping;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using FluentNHibernate.Mapping;
-using NHibernate;
-using nHibernate_entities;
-using nHibernate_core_console.SessionFactories;
+﻿using nHibernate_entities;
 using System;
 using System.Linq;
-
+using NHibernate.Cfg;
 
 namespace nHibernate_core_console
 {
@@ -25,9 +19,7 @@ namespace nHibernate_core_console
     {
         public void RunTest()
         {
-            var connStr = "Server =.; initial catalog = nh1; Integrated Security = True";
-
-            var sessionFactory = SessionFactoryBuilder.BuildSessionFactory(connStr);
+            var sessionFactory = new Configuration().Configure().BuildSessionFactory();
 
             using (var session = sessionFactory.OpenSession())
             {

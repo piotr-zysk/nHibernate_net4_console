@@ -16,4 +16,10 @@
     <ProjectReference Include="..\nHibernate_setup\nHibernate_setup.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
