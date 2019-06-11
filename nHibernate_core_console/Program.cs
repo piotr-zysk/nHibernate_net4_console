@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 
 namespace nHibernate_core_console
 {
@@ -9,14 +10,24 @@ namespace nHibernate_core_console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var N = new NHibernateTest();
 
-            new NHibernateTest().RunTest();
+            N.ShowSQLMigrationCode();
+
+            Console.WriteLine("\r\n\r\n");
+
+            N.RunTest();
         }
     }
 
     class NHibernateTest
     {
+        public void ShowSQLMigrationCode()
+        {
+            Configuration cfg = new Configuration().Configure();
+            new SchemaExport(cfg).Create(true, false);
+        }
+
         public void RunTest()
         {
             var sessionFactory = new Configuration().Configure().BuildSessionFactory();
