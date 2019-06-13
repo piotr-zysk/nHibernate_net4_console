@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using nHibernate.core.webapi.Repositories;
+using NHibernate.Cfg;
 
 namespace nHibernate.core.webapi
 {
@@ -25,6 +27,18 @@ namespace nHibernate.core.webapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSingleton<NHibernate.ISessionFactory>(factory => new Configuration().Configure().BuildSessionFactory());
+            
+            services.AddScoped<NHibernate.ISession>(factory =>
+               factory
+                    .GetServices<NHibernate.ISessionFactory>()
+                    .First()
+                    .OpenSession()
+            );
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

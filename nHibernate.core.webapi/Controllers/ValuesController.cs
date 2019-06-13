@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using nHibernate.core.webapi.Repositories;
+using nHibernate_entities;
 
 namespace nHibernate.core.webapi.Controllers
 {
@@ -10,18 +12,34 @@ namespace nHibernate.core.webapi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IUserRepository repo;
+
+        public ValuesController(IUserRepository repo)
+        {
+            this.repo = repo;
+        }
+
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(repo.GetAll());
         }
+
+        [Route("count")]
+        [HttpGet]
+        public ActionResult<int> Count()
+        {
+            return Ok(repo.GetNumberofUsers());
+        }
+
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            return $"value: {id}";
         }
 
         // POST api/values
