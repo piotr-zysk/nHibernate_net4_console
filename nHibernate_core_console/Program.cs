@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using NHibernate.Linq;
 
 namespace nHibernate_core_console
 {
@@ -58,9 +59,17 @@ namespace nHibernate_core_console
 
                 using (var session2 = sessionFactory.OpenSession())
                 {
-                    using (session2.BeginTransaction())
+                    
+
+                    using (var transaction = session2.BeginTransaction())
                     {
-                        var adultUsers = session2.Query<User>().Where(u => u.Age >= 18).ToList();
+                        
+                        var deleteResult = session2.Query<User>().Where(u => u.Age == 85).Delete();
+                        transaction.Commit(); //without Commit objects are deleted in memory, not in database
+
+                        Console.WriteLine("Deleted: " + deleteResult);
+                        
+                        var adultUsers = session2.Query<User>().Where(u => u.Age > 18).Take(3).ToList();
 
                         foreach (var user in adultUsers)
                         {
