@@ -69,12 +69,19 @@ namespace nHibernate_core_console
 
                         Console.WriteLine("Deleted: " + deleteResult);
                         
-                        var adultUsers = session2.Query<User>().Where(u => u.Age > 18).Take(3).ToList();
+                        var adultUsers = session2.Query<User>().Where(u => u.Age > 18 && u.Name == "Zenek").Take(3).ToList();
 
                         foreach (var user in adultUsers)
                         {
                             Console.WriteLine($"User: {user.Name}, age: {user.Age}.");
                         }
+
+                        var testCounter = session2.Query<User>().Where(u => u.Name.StartsWith("R")).Select(u => u.Age).ToFutureValue(q => q.Count());
+                        var minAge = 99;
+                            
+                        if (testCounter.Value>0) minAge = session2.Query<User>().Where(u => u.Name.StartsWith("R")).Select(u => u.Age).Min();
+
+                        Console.WriteLine($"Minimal age: {minAge}.");
                     }
                 }
             }
