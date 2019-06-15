@@ -1,4 +1,4 @@
-﻿using nHibernate_entities;
+﻿using nHibernate.entities;
 using System.Collections.Generic;
 
 namespace nHibernate.core.webapi.Repositories

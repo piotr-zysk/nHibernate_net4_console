@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nHibernate_net4_console", "nHibernate_net4_console\nHibernate_net4_console.csproj", "{87A504BF-2FF5-4839-B2E0-37E18FA55C4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nHibernate.net4.console", "nHibernate_net4_console\nHibernate.net4.console.csproj", "{87A504BF-2FF5-4839-B2E0-37E18FA55C4B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D} = {7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}
 		{FA81E7C4-CD1A-406D-82F0-F70688AC8992} = {FA81E7C4-CD1A-406D-82F0-F70688AC8992}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate_core_console", "nHibernate_core_console\nHibernate_core_console.csproj", "{91E80E5F-683B-41AE-ACBF-87DD848EAC45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate.core.console", "nHibernate_core_console\nHibernate.core.console.csproj", "{91E80E5F-683B-41AE-ACBF-87DD848EAC45}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D} = {7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate_entities", "nHibernate_entities\nHibernate_entities.csproj", "{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate.entities", "nHibernate_entities\nHibernate.entities.csproj", "{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate_setup", "nHibernate_setup\nHibernate_setup.csproj", "{FA81E7C4-CD1A-406D-82F0-F70688AC8992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate.setup", "nHibernate_setup\nHibernate.setup.csproj", "{FA81E7C4-CD1A-406D-82F0-F70688AC8992}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D} = {7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nHibernate.core.webapi", "nHibernate.core.webapi\nHibernate.core.webapi.csproj", "{D258A0E0-7E15-4AE0-8D0F-05073799DAE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nHibernate.core.webapi", "nHibernate.core.webapi\nHibernate.core.webapi.csproj", "{D258A0E0-7E15-4AE0-8D0F-05073799DAE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

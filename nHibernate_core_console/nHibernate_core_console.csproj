@@ -1,29 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="hibernate.cfg.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="hibernate.cfg.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="FluentNHibernate" Version="2.1.2" />
-    <PackageReference Include="NHibernate" Version="5.2.5" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\nHibernate_entities\nHibernate_entities.csproj" />
-    <ProjectReference Include="..\nHibernate_setup\nHibernate_setup.csproj" />
-  </ItemGroup>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
 </Project>
