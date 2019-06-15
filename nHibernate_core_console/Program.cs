@@ -4,6 +4,7 @@ using System.Linq;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NHibernate.Linq;
+using static System.Console;
 
 namespace nHibernate.core.console
 {
@@ -13,9 +14,10 @@ namespace nHibernate.core.console
         {
             var N = new NHibernateTest();
 
-            N.ShowSQLMigrationCode();
+            bool ExecuteDDL = false;
+            N.ShowSQLMigrationCode(ExecuteDDL);
 
-            Console.WriteLine("\r\n\r\n");
+            //Console.WriteLine("\r\n\r\n");
 
             N.RunTest();
         }
@@ -23,13 +25,52 @@ namespace nHibernate.core.console
 
     class NHibernateTest
     {
-        public void ShowSQLMigrationCode()
+        protected void WriteSeparator(int Length = 0)
+        {
+            if (Length == 0) Length = Console.WindowWidth;
+            Console.WriteLine("".PadRight(Length, '_'));
+        }
+
+        public void ShowSQLMigrationCode(bool ExecuteDDL = false)
         {
             Configuration cfg = new Configuration().Configure();
-            new SchemaExport(cfg).Create(true, false);
+
+            WriteSeparator();
+            WriteLine("DDL");
+            WriteLine();            
+
+            new SchemaExport(cfg).Create(true, ExecuteDDL);
+
+            WriteLine();
+            WriteSeparator();
         }
 
         public void RunTest()
+        {
+            WriteSeparator();
+            WriteLine("SQL");
+            WriteLine();
+
+            var sessionFactory = new Configuration().Configure().BuildSessionFactory();
+
+            using (var session = sessionFactory.OpenSession())
+            {
+                // populate the database  
+                using (var transaction = session.BeginTransaction())
+                {
+                    
+                    //transaction.Commit();
+                }
+
+
+            }
+
+            WriteLine();
+            WriteSeparator();
+        }
+
+
+        public void RunTestOld()
         {
             var sessionFactory = new Configuration().Configure().BuildSessionFactory();
 
