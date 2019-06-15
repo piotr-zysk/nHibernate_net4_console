@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Cfg;
-using nHibernate_entities;
+using nHibernate.entities;
 
-namespace nHibernate_net4_console
+namespace nHibernate.net4.console
 {
     class Program
     {

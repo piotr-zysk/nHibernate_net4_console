@@ -1,11 +1,11 @@
-﻿using nHibernate_entities;
+﻿using nHibernate.entities;
 using System;
 using System.Linq;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NHibernate.Linq;
 
-namespace nHibernate_core_console
+namespace nHibernate.core.console
 {
     class Program
     {

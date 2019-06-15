@@ -1,4 +1,4 @@
-﻿namespace nHibernate_entities
+﻿namespace nHibernate.entities
 {
     public class User
     {

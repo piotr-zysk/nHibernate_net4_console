@@ -69,13 +69,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\nHibernate_entities\nHibernate_entities.csproj">
+    <ProjectReference Include="..\nHibernate_entities\nHibernate.entities.csproj">
       <Project>{7CB76B7B-6CF8-4B80-BC7E-72A5A415332D}</Project>
-      <Name>nHibernate_entities</Name>
+      <Name>nHibernate.entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\nHibernate_setup\nHibernate_setup.csproj">
+    <ProjectReference Include="..\nHibernate_setup\nHibernate.setup.csproj">
       <Project>{fa81e7c4-cd1a-406d-82f0-f70688ac8992}</Project>
-      <Name>nHibernate_setup</Name>
+      <Name>nHibernate.setup</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

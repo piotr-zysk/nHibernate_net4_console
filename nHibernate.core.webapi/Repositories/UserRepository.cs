@@ -1,9 +1,7 @@
 ﻿using NHibernate;
-using nHibernate_entities;
-using System;
+using nHibernate.entities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace nHibernate.core.webapi.Repositories
 {

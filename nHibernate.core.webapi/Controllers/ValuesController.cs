@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using nHibernate.core.webapi.Repositories;
-using nHibernate_entities;
+using nHibernate.entities;
 
 namespace nHibernate.core.webapi.Controllers
 {
