@@ -3,10 +3,7 @@ using System.Collections.Generic;
 
 namespace nHibernate.core.webapi.Repositories
 {
-    public interface IUserRepository : IRepository
+    public interface IRepository
     {
-        int GetNumberofUsers();
-
-        IEnumerable<User> GetAll();
     }
 }

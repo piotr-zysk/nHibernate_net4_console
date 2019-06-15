@@ -18,8 +18,12 @@ namespace nHibernate.core.webapi.IOC
         {
             container = new WindsorContainer();
 
+            // example of the most basic regstration:
+            //
+            // container.Register( Component.For<IMyService>() .ImplementedBy<MyServiceImpl>() );
+
             container.Register(Classes.FromAssembly(Assembly.GetExecutingAssembly())
-                .BasedOn<IUserRepository>().WithService.FromInterface());
+                .BasedOn<IRepository>().WithService.FromInterface());
 
             
             container.Register(Component
