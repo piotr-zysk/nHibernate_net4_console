@@ -5,6 +5,7 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NHibernate.Linq;
 using static System.Console;
+using System.Collections.Generic;
 
 namespace nHibernate.core.console
 {
@@ -14,7 +15,7 @@ namespace nHibernate.core.console
         {
             var N = new NHibernateTest();
 
-            bool ExecuteDDL = false;
+            bool ExecuteDDL = true;
             N.ShowSQLMigrationCode(ExecuteDDL);
 
             //Console.WriteLine("\r\n\r\n");
@@ -51,18 +52,42 @@ namespace nHibernate.core.console
             WriteLine("SQL");
             WriteLine();
 
+            
             var sessionFactory = new Configuration().Configure().BuildSessionFactory();
 
             using (var session = sessionFactory.OpenSession())
             {
-                // populate the database  
+                
+                var p = new Parent() { Name = "test", Children = new HashSet<Child>() };
+                WriteLine("*** Adding new Parent:");
+                session.Save(p);
+                
                 using (var transaction = session.BeginTransaction())
                 {
+                    //var p = session.Query<Parent>().FirstOrDefault();
+
+                    var c = new Child("child2");
+                    c.Parent = p;
+                    p.Children.Add(c);
+
+                    transaction.Commit();
+
+                    WriteLine("*** Adding Child:");
                     
-                    //transaction.Commit();
+                    //session.Save(c);
+
+                    session.Flush();
+
+
+                    var ChildrenQuery = session.Query<Parent>().Where(x => x.Id == 1).Select(x => x.Children);
+                    var ChildrenCount = ChildrenQuery.Select(x => x.Count());
+
+                    WriteLine(ChildrenCount);
+
+                    var ChildrenConcat = ChildrenQuery;
+                        
+                    //Console.WriteLine($"{ChildrenCount}:{ChildrenConcat}");
                 }
-
-
             }
 
             WriteLine();

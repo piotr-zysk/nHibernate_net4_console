@@ -13,8 +13,8 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       <column name="Name" length="20" not-null="true" />
     </property>
     
-    <set name="Children">
-      <key column="parent_id" />
+    <set name="Children" cascade="all">
+      <key column="parent_id" />      
       <one-to-many class="Child" />
     </set>
     
