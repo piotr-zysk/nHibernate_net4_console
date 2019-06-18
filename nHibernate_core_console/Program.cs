@@ -18,7 +18,7 @@ namespace nHibernate.core.console
             bool ExecuteDDL = false;
             N.ShowSQLMigrationCode(ExecuteDDL);
             
-            //N.RunTest();
+            N.RunTest();
         }
     }
 
@@ -62,10 +62,10 @@ namespace nHibernate.core.console
                     LastName = "Łopata",
                     Messages = new HashSet<MessageRecipient>()
                 };
-
+                
                 var message = new Message()
                 {
-                    //Author = user,                    
+                    Author = user,                    
                     Title = "tytuł",
                     Content = "jakaś wiadomość",
                     Priority = MessagePriority.Low,
@@ -74,7 +74,7 @@ namespace nHibernate.core.console
 
                 var mr = new MessageRecipient()
                 {
-                    //Message = message,
+                    Message = message,
                     User = user,
                     Status = ReadStatus.New
                 };
@@ -82,45 +82,15 @@ namespace nHibernate.core.console
                 message.Recipients.Add(mr);
                 user.Messages.Add(mr);
 
-                var x = message.Recipients.FirstOrDefault().User.LastName;
-                //var y = message.Author.LastName;
-                //WriteLine($"{x} {y}");
-
-                /*
-                var p = new Parent() { Name = "test", Children = new HashSet<Child>() };
-                WriteLine("*** Adding new Parent:");
-                session.Save(p);
-                */
-
-                /*
                 using (var transaction = session.BeginTransaction())
                 {
-                    var p = session.Query<Parent>().FirstOrDefault();
 
-                    var c = new Child("child");
-                    c.Parent = p;
-                    p.Children.Add(c);
+                    session.Save(message);
+                    session.Save(user);
 
                     transaction.Commit();
-
-                    WriteLine("*** Adding Child:");
-                    
-                    //session.Save(c);
-
-                    session.Flush();
-
-
-                    var ChildrenQuery = session.Query<Parent>().Where(x => x.Id == 1).Select(x => x.Children);
-                    var ChildrenCount = ChildrenQuery.Select(x => x.Count()).First();
-
-                    WriteLine(ChildrenCount);
-
-                    var ChildrenConcat = ChildrenQuery.ToArray()[0].Aggregate("", (res, next) => res+","+(next as Child).Name).Substring(1);
-                    
-                        
-                    Console.WriteLine($"{ChildrenCount} children: {ChildrenConcat}");
                 }
-                */
+                
             }
 
             WriteLine();

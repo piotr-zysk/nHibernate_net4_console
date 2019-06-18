@@ -17,7 +17,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       <column name="LastName" length="20" not-null="true" />
     </property>
 
-    <bag
+    <set
       name="Messages"
       inverse="true"
       lazy="true"
@@ -25,9 +25,9 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
 
       <key column="UserId"/>
       <one-to-many class="MessageRecipient"/>
-    </bag>
+    </set>
 
-    <bag
+    <set
       name="SentMessages"
       inverse="true"
       lazy="true"
@@ -35,7 +35,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
 
       <key column="AuthorId"/>
       <one-to-many class="Message"/>
-    </bag>
+    </set>
     
   </class>
     
@@ -64,16 +64,16 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       name="Author"
       class="User"
       column="AuthorId"
-      not-null="true"/>
+      not-null="false"/>
 
 
-    <bag name="Recipients"
+    <set name="Recipients"
       inverse="true"
       lazy="true"
       cascade="all">
       <key column="MessageId"/>
       <one-to-many class="MessageRecipient"/>
-    </bag>
+    </set>
 
   </class>
 
@@ -86,7 +86,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
     <many-to-one
       name="User"
       column="UserId"
-      not-null="true"/>
+      not-null="false"/>
 
     <many-to-one
       name="Message"
