@@ -15,8 +15,8 @@ namespace nHibernate.core.console
         {
             var N = new NHibernateTest();
 
-            bool ExecuteDDL = true;
-            N.ShowSQLMigrationCode(ExecuteDDL);
+            bool ExecuteDDL = false;
+            //N.ShowSQLMigrationCode(ExecuteDDL);
 
             //Console.WriteLine("\r\n\r\n");
 
@@ -58,15 +58,48 @@ namespace nHibernate.core.console
             using (var session = sessionFactory.OpenSession())
             {
                 
+                var user = new User()
+                {
+                    FirstName = "Zenon",
+                    LastName = "Łopata",
+                    Messages = new HashSet<MessageRecipient>()
+                };
+
+                var message = new Message()
+                {
+                    Author = user,                    
+                    Title = "tytuł",
+                    Content = "jakaś wiadomość",
+                    Priority = MessagePriority.Low,
+                    Recipients = new HashSet<MessageRecipient>()
+                };
+
+                var mr = new MessageRecipient()
+                {
+                    Message = message,
+                    User = user,
+                    Status = ReadStatus.New
+                };
+
+                message.Recipients.Add(mr);
+                user.Messages.Add(mr);
+
+                var x = message.Recipients.FirstOrDefault().User.LastName;
+                var y = message.Author.LastName;
+                WriteLine($"{x} {y}");
+
+                /*
                 var p = new Parent() { Name = "test", Children = new HashSet<Child>() };
                 WriteLine("*** Adding new Parent:");
                 session.Save(p);
-                
+                */
+
+                /*
                 using (var transaction = session.BeginTransaction())
                 {
-                    //var p = session.Query<Parent>().FirstOrDefault();
+                    var p = session.Query<Parent>().FirstOrDefault();
 
-                    var c = new Child("child2");
+                    var c = new Child("child");
                     c.Parent = p;
                     p.Children.Add(c);
 
@@ -80,14 +113,16 @@ namespace nHibernate.core.console
 
 
                     var ChildrenQuery = session.Query<Parent>().Where(x => x.Id == 1).Select(x => x.Children);
-                    var ChildrenCount = ChildrenQuery.Select(x => x.Count());
+                    var ChildrenCount = ChildrenQuery.Select(x => x.Count()).First();
 
                     WriteLine(ChildrenCount);
 
-                    var ChildrenConcat = ChildrenQuery;
+                    var ChildrenConcat = ChildrenQuery.ToArray()[0].Aggregate("", (res, next) => res+","+(next as Child).Name).Substring(1);
+                    
                         
-                    //Console.WriteLine($"{ChildrenCount}:{ChildrenConcat}");
+                    Console.WriteLine($"{ChildrenCount} children: {ChildrenConcat}");
                 }
+                */
             }
 
             WriteLine();
@@ -95,62 +130,6 @@ namespace nHibernate.core.console
         }
 
 
-        public void RunTestOld()
-        {
-            var sessionFactory = new Configuration().Configure().BuildSessionFactory();
 
-            using (var session = sessionFactory.OpenSession())
-            {
-                // populate the database  
-                using (var transaction = session.BeginTransaction())
-                {
-                    // create a couple of Persons  
-                    var person1 = new User
-                    {
-                        Name = "Rayen Trabelsi",
-                        Age = 22
-                    };
-
-                    var person2 = new User
-                    {
-                        Name = "Umar Kakadu",
-                        Age = 85
-                    };
-
-                    session.SaveOrUpdate(person1);
-                    session.SaveOrUpdate(person2);
-
-                    transaction.Commit();
-                }
-
-                using (var session2 = sessionFactory.OpenSession())
-                {
-                    
-
-                    using (var transaction = session2.BeginTransaction())
-                    {
-                        
-                        var deleteResult = session2.Query<User>().Where(u => u.Age == 85).Delete();
-                        transaction.Commit(); //without Commit objects are deleted in memory, not in database
-
-                        Console.WriteLine("Deleted: " + deleteResult);
-                        
-                        var adultUsers = session2.Query<User>().Where(u => u.Age > 18 && u.Name == "Zenek").Take(3).ToList();
-
-                        foreach (var user in adultUsers)
-                        {
-                            Console.WriteLine($"User: {user.Name}, age: {user.Age}.");
-                        }
-
-                        var testCounter = session2.Query<User>().Where(u => u.Name.StartsWith("R")).Select(u => u.Age).ToFutureValue(q => q.Count());
-                        var minAge = 99;
-                            
-                        if (testCounter.Value>0) minAge = session2.Query<User>().Where(u => u.Name.StartsWith("R")).Select(u => u.Age).Min();
-
-                        Console.WriteLine($"Minimal age: {minAge}.");
-                    }
-                }
-            }
-        }
     }
 }

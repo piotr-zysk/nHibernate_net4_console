@@ -7,6 +7,6 @@
     <property name="show_sql">true</property>
     <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
     
-    <mapping assembly="nHibernate.setup" />
+    <!-- <mapping assembly="nHibernate.setup" /> -->
   </session-factory>
 </hibernate-configuration>
