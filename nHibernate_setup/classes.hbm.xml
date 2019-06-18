@@ -27,6 +27,16 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       <one-to-many class="MessageRecipient"/>
     </bag>
 
+    <bag
+      name="SentMessages"
+      inverse="true"
+      lazy="true"
+      cascade="all">
+
+      <key column="AuthorId"/>
+      <one-to-many class="Message"/>
+    </bag>
+    
   </class>
     
  
@@ -50,7 +60,12 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       <column name="Priority" not-null="true" />
     </property>
 
-    <!-- <one-to-one name="Author" property-ref="User" cascade="all" fetch="join"/> -->
+    <many-to-one
+      name="Author"
+      class="User"
+      column="AuthorId"
+      not-null="true"/>
+
 
     <bag name="Recipients"
       inverse="true"

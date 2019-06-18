@@ -8,6 +8,7 @@ namespace nHibernate.entities
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
         public virtual ISet<MessageRecipient> Messages { get; set; }
+        public virtual ISet<Message> SentMessages { get; set; }
     }
 
   
