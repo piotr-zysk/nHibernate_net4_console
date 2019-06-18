@@ -12,7 +12,7 @@ namespace nHibernate.entities
 
         public virtual MessagePriority Priority { get; set; }
         
-        public virtual User Author { get; set; }
+        //public virtual User Author { get; set; }
 
         public virtual ISet<MessageRecipient> Recipients { get; set; }
     }

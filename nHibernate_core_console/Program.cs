@@ -16,11 +16,9 @@ namespace nHibernate.core.console
             var N = new NHibernateTest();
 
             bool ExecuteDDL = false;
-            //N.ShowSQLMigrationCode(ExecuteDDL);
-
-            //Console.WriteLine("\r\n\r\n");
-
-            N.RunTest();
+            N.ShowSQLMigrationCode(ExecuteDDL);
+            
+            //N.RunTest();
         }
     }
 
@@ -67,7 +65,7 @@ namespace nHibernate.core.console
 
                 var message = new Message()
                 {
-                    Author = user,                    
+                    //Author = user,                    
                     Title = "tytuł",
                     Content = "jakaś wiadomość",
                     Priority = MessagePriority.Low,
@@ -76,7 +74,7 @@ namespace nHibernate.core.console
 
                 var mr = new MessageRecipient()
                 {
-                    Message = message,
+                    //Message = message,
                     User = user,
                     Status = ReadStatus.New
                 };
@@ -85,8 +83,8 @@ namespace nHibernate.core.console
                 user.Messages.Add(mr);
 
                 var x = message.Recipients.FirstOrDefault().User.LastName;
-                var y = message.Author.LastName;
-                WriteLine($"{x} {y}");
+                //var y = message.Author.LastName;
+                //WriteLine($"{x} {y}");
 
                 /*
                 var p = new Parent() { Name = "test", Children = new HashSet<Child>() };

@@ -4,6 +4,8 @@ namespace nHibernate.entities
 {
     public class MessageRecipient
     {
+        public virtual int Id { get; set; }
+
         public virtual Message Message { get; set; }
         public virtual User User { get; set; }
         public virtual ReadStatus Status { get; set; }
