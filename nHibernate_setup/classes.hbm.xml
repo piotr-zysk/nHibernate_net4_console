@@ -21,7 +21,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       name="Messages"
       inverse="true"
       lazy="true"
-      cascade="all">
+      cascade="none">
 
       <key column="UserId"/>
       <one-to-many class="MessageRecipient"/>
@@ -31,7 +31,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       name="SentMessages"
       inverse="true"
       lazy="true"
-      cascade="all">
+      cascade="none">
 
       <key column="AuthorId"/>
       <one-to-many class="Message"/>
@@ -64,7 +64,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
       name="Author"
       class="User"
       column="AuthorId"
-      not-null="false"/>
+      not-null="true"/>
 
 
     <set name="Recipients"
@@ -86,7 +86,7 @@ namespace="nHibernate.entities" assembly="nHibernate.entities">
     <many-to-one
       name="User"
       column="UserId"
-      not-null="false"/>
+      not-null="true"/>
 
     <many-to-one
       name="Message"

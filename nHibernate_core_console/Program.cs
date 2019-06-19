@@ -15,7 +15,7 @@ namespace nHibernate.core.console
         {
             var N = new NHibernateTest();
 
-            bool ExecuteDDL = false;
+            bool ExecuteDDL = true;
             N.ShowSQLMigrationCode(ExecuteDDL);
             
             N.RunTest();
@@ -84,9 +84,9 @@ namespace nHibernate.core.console
 
                 using (var transaction = session.BeginTransaction())
                 {
-
-                    session.Save(message);
                     session.Save(user);
+                    session.Save(message);
+                    
 
                     transaction.Commit();
                 }
