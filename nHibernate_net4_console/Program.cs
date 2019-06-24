@@ -31,20 +31,23 @@ namespace nHibernate.net4.console
                 // insert to db
                 var newUser = new User
                 {
-                    Name = "Zdzisława J.",
-                    Age = 58
+                    //Name = "Zdzisława J.",
+                    //Age = 58
                 };
 
                 session.Save(newUser);
                 tx.Commit();
 
                 // select from db
+
+                /*
                 var adultUsers = session.Query<User>().Where(u => u.Age >= 18).ToList();
                 
                 foreach (var user in adultUsers)
                 {
                     Console.WriteLine($"User: {user.Name}, age: {user.Age}.");
                 }
+                */
 
             }
 
